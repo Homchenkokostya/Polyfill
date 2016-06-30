@@ -36,8 +36,11 @@ global var \_extend_                                       | default settings pl
 ### Plugins
 ```sh
 ;(function(exports, fn) {
+
     exports.plugin = exports.plugin || fn;
+
 })(this, function(selector, options) {
+
     var settings = _extend_({
         color: '#fff',
 		background: '#000',
