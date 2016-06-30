@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Polyfill</title>
+</head>
+<body>
+<button>Submit</button>
+
+<script src="../src/polyfill.js"></script>
+<script src="plugin.js"></script>
+
+<script>
+	plugin( 'button', {
+		color: '#fff',
+		background: 'green',
+		height: 40,
+		width: 120
+	});
+</script>
+</body>
+</html>
