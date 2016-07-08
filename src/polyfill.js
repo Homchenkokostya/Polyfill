@@ -84,7 +84,7 @@
 	  	return matches.some(function( element ) {
 	    	return element === _this;
 	  	});
-	};
+	}
 	
 	_Element.closest = _Element.closest || function( selector ) {
 		var element = this;
@@ -129,7 +129,7 @@
 		return this.filter(function( value ) {
 		    return array.indexOf( value ) < 0;
 		});
-	};
+	}
 
 
 	/*
