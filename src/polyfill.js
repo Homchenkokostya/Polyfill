@@ -2,7 +2,7 @@
  *	"Polyfill"
  *	author: webkostya
  *	email: homchenkokostya@gmail.com
- *	version: 1.0.0
+ *	version: 1.0.1
  */
 
 ;(function(exports, undefined) {
@@ -36,6 +36,16 @@
 		return this.querySelector( selector ) == null ? false : true;
 	}
 
+	_Document.triggerListener = function( name ) {
+		if ( 'createEvent' in document ) {
+			var event = document.createEvent( 'Event' );
+				event.initEvent(name, true, true);
+			this.dispatchEvent( event );
+		} else {
+			this.fireEvent( name );
+		}
+	}
+
 
 	/*
 	 *	Element
@@ -45,15 +55,7 @@
 	_Element.query = _Document.query;
 	_Element.exist = _Document.exist;
 
-	_Element.triggerListener = function( name ) {
-		if ( 'createEvent' in document ) {
-			var event = document.createEvent( 'Event' );
-				event.initEvent(name, true, true);
-			this.dispatchEvent( event );
-		} else {
-			this.fireEvent( name );
-		}
-	}
+	_Element.triggerListener = _Document.triggerListener;
 
 	_Element.setAttributes = function( attrs ) {
 		for (var key in attrs) {
@@ -75,7 +77,7 @@
 		return this;
 	}
 
-	_Element.matches = _Element.msMatchesSelector || _Element.mozMatchesSelector || _Element.webkitMatchesSelector || function( selector ) {
+	_Element.matches = _Element.matches || _Element.mozMatchesSelector || _Element.msMatchesSelector || _Element.oMatchesSelector || _Element.webkitMatchesSelector || function( selector ) {
 		var matches = document.query( selector ),
 			_this = this;
 	  	
@@ -84,7 +86,7 @@
 	  	});
 	};
 	
-	_Element.closest = function( selector ) {
+	_Element.closest = _Element.closest || function( selector ) {
 		var element = this;
 
 		while (element && element.nodeType === 1) {
