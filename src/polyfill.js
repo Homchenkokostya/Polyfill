@@ -2,7 +2,7 @@
  *	"Polyfill"
  *	author: webkostya
  *	email: homchenkokostya@gmail.com
- *	version: 1.0.1
+ *	version: 1.0.2
  */
 
 ;(function(exports, undefined) {
@@ -21,61 +21,8 @@
 
 
 	/*
-	 *	Document
-	 */
-
-	_Document.one = function( selector ) {
-		return this.querySelector( selector );
-	}
-
-	_Document.query = function( selector ) {
-		return [].slice.call( this.querySelectorAll( selector ) );
-	}
-
-	_Document.exist = function( selector ) {
-		return this.querySelector( selector ) == null ? false : true;
-	}
-
-	_Document.triggerListener = function( name ) {
-		if ( 'createEvent' in document ) {
-			var event = document.createEvent( 'Event' );
-				event.initEvent(name, true, true);
-			this.dispatchEvent( event );
-		} else {
-			this.fireEvent( name );
-		}
-	}
-
-
-	/*
 	 *	Element
 	 */
-
-	_Element.one = _Document.one;
-	_Element.query = _Document.query;
-	_Element.exist = _Document.exist;
-
-	_Element.triggerListener = _Document.triggerListener;
-
-	_Element.setAttributes = function( attrs ) {
-		for (var key in attrs) {
-			this.setAttribute(key, attrs[key]);
-		}
-
-		return this;
-	}
-
-	_Element.insert = function( selector ) {
-		if ( Array.isArray( selector ) ) {
-			for (var i = 0; i < selector.length; i++) {
-				this.appendChild( selector[i] );
-			}
-		} else {
-			this.appendChild( selector );
-		}
-
-		return this;
-	}
 
 	_Element.matches = _Element.matches || _Element.mozMatchesSelector || _Element.msMatchesSelector || _Element.oMatchesSelector || _Element.webkitMatchesSelector || function( selector ) {
 		var matches = document.query( selector ),
@@ -98,6 +45,26 @@
 		return null;
 	}
 
+	_Element.setAttributes = function( attrs ) {
+		for (var key in attrs) {
+			this.setAttribute(key, attrs[key]);
+		}
+
+		return this;
+	}
+
+	_Element.insert = function( selector ) {
+		if ( Array.isArray( selector ) ) {
+			for (var i = 0; i < selector.length; i++) {
+				this.appendChild( selector[i] );
+			}
+		} else {
+			this.appendChild( selector );
+		}
+
+		return this;
+	}
+
 	_Element.insertAfter = function(element, selector) {
 		var next = selector.nextSibling;
 		return next ? this.insertBefore(element, next) : this.appendChild( elem );
@@ -111,6 +78,51 @@
 		return this;
 	}
 
+	_Element.one = function( selector ) {
+		return this.querySelector( selector );
+	}
+
+	_Element.query = function( selector ) {
+		return [].slice.call( this.querySelectorAll( selector ) );
+	}
+
+	_Element.exist = function( selector ) {
+		return this.querySelector( selector ) == null ? false : true;
+	}
+
+	_Element.triggerListener = function( name ) {
+		if ( 'createEvent' in document ) {
+			var event = document.createEvent( 'Event' );
+				event.initEvent(name, true, true);
+			this.dispatchEvent( event );
+		} else {
+			this.fireEvent( name );
+		}
+	}
+
+	_Element.addDelegateListener = function(method, selector, callback) {
+		this.addEventListener(method, function( event ) {
+			var target = event.target,
+				element = target.closest( selector );
+			
+			if ( !element || !this.contains( element ) ) return;
+
+			callback.apply( this );
+		});
+	}
+
+
+	/*
+	 *	Document
+	 */
+
+	_Document.one = _Element.one;
+	_Document.query = _Element.query;
+	_Document.exist = _Element.exist;
+
+	_Document.triggerListener = _Element.triggerListener;
+	_Document.addDelegateListener = _Element.addDelegateListener;
+
 
 	/*
 	 *	String
@@ -119,6 +131,10 @@
 	_String.clear = function() {
 		return this.replace(/\s+/g,' ').trim();
 	}
+
+	_String.includes = _String.includes || function() {
+		return String.prototype.indexOf.apply(this, arguments) !== -1;
+	};
 
 
 	/*

@@ -1,29 +1,31 @@
 # Polyfill
-#### varsion: 1.0.1
+#### varsion: 1.0.2
 #
 
 Method                                  | Value
 --------------------------------------- | --------------------------------------
-document.one( '.selector' ) or Node.one( '.selector' )                  | return Node
-document.query( '.selector' ) or Node.query( '.selector' )              | return Array
-document.exist( '.selector' ) or Node.exist( '.selector' )              | return true or false
-document.triggerListener( 'click' ) or Node.triggerListener( 'click' )  | trigger event
-Node.setAttributes({'data-src': String, 'rel': String})                 | return Node
-Node.insert( [node,node] ) or Node.insert( node )                       | return Node
-Node.matches( '[class="main"]' )                                        | return true or false
-Node.children[0].closest( 'body' )                                      | return body or Node.children[0]
-parentNode.insertAfter(newNode, referenceNode)                          | return newNode
-Node.css({top: 100, left: 200})                                         | return Node  
-String.clear()                                                          | return String (trim)
-Array.compare( Array )                                                  | return difference
-global var \_extend_                                                    | default settings plugin
+document.one( '.selector' ) or Node.one( '.selector' )                                                           | return Node
+document.query( '.selector' ) or Node.query( '.selector' )                                                       | return Array
+document.exist( '.selector' ) or Node.exist( '.selector' )                                                       | return true or false
+document.addDelegateListener(method, selector, callback) or Node.addDelegateListener(method, selector, callback) | add Event
+document.triggerListener( 'click' ) or Node.triggerListener( 'click' )                                           | trigger event
+Node.setAttributes({'data-src': String, 'rel': String})                                                          | return Node
+Node.insert( [node,node] ) or Node.insert( node )                                                                | return Node
+Node.matches( '[class="main"]' )                                                                                 | return true or false
+Node.children[0].closest( 'body' )                                                                               | return body or Node.children[0]
+parentNode.insertAfter(newNode, referenceNode)                                                                   | return newNode
+Node.css({top: 100, left: 200})                                                                                  | return Node  
+String.clear()                                                                                                   | return String (trim)
+String.includes()                                                                                                | return true or false
+Array.compare( Array )                                                                                           | return difference
+global var \_extend_                                                                                             | default settings plugin
 
 ### Installation
 ```sh
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Polyfill</title>
+    <title>Polyfill</title>
 </head>
 <body>
     ...
@@ -43,9 +45,9 @@ global var \_extend_                                                    | defaul
 
     var settings = _extend_({
         color: '#fff',
-		background: '#000',
-		height: 500,
-		width: 100
+        background: '#000',
+        height: 500,
+        width: 100
     }, options || {});
     
     var element = document.one( selector );
