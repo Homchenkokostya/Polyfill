@@ -2,7 +2,7 @@
  *	"Polyfill"
  *	author: webkostya
  *	email: homchenkokostya@gmail.com
- *	version: 1.0.2
+ *	version: 1.0.3
  */
 
 ;(function(exports, undefined) {
@@ -25,12 +25,11 @@
 	 */
 
 	_Element.matches = _Element.matches || _Element.mozMatchesSelector || _Element.msMatchesSelector || _Element.oMatchesSelector || _Element.webkitMatchesSelector || function( selector ) {
-		var matches = document.query( selector ),
-			_this = this;
+		var matches = document.query( selector );
 	  	
 	  	return matches.some(function( element ) {
-	    	return element === _this;
-	  	});
+	    	return element === this;
+	  	}, this );
 	}
 	
 	_Element.closest = _Element.closest || function( selector ) {
