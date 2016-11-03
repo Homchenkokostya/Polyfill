@@ -3,8 +3,9 @@
  *	author: Webkostya
  *	email: webkostya@icloud.com
  *  gitub: https://github.com/webkostya/Polyfill
- *	version: 1.0.3
+ *	version: 1.0.4
  */
+
 
 ;(function(exports, undefined) {
 	
@@ -86,6 +87,10 @@
 		return [].slice.call( this.querySelectorAll( selector ) );
 	}
 
+	_Element.childs = function() {
+		return [].slice.call( this.children );
+	}
+
 	_Element.exist = function( selector ) {
 		return this.querySelector( selector ) == null ? false : true;
 	}
@@ -116,9 +121,10 @@
 	 *	Document
 	 */
 
-	_Document.one = _Element.one;
+	_Document.one   = _Element.one;
 	_Document.query = _Element.query;
-	_Document.exist = _Element.exist;
+	_Document.childs = _Element.childs;
+	_Document.exist  = _Element.exist;
 
 	_Document.triggerListener = _Element.triggerListener;
 	_Document.addDelegateListener = _Element.addDelegateListener;
