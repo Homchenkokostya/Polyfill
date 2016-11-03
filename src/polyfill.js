@@ -1,7 +1,8 @@
 /*
  *	"Polyfill"
- *	author: webkostya
- *	email: homchenkokostya@gmail.com
+ *	author: Webkostya
+ *	email: webkostya@icloud.com
+ *  gitub: https://github.com/webkostya/Polyfill
  *	version: 1.0.3
  */
 
