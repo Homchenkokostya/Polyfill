@@ -6,7 +6,7 @@ Method                                  | Value
 --------------------------------------- | --------------------------------------
 document.one( '.selector' ) or Node.one( '.selector' )                                                           | return Node
 document.query( '.selector' ) or Node.query( '.selector' )                                                       | return Array
-document.body.childs() or Node.childs()                                                       | return Array
+document.body.childs( index ) or Node.childs( index )                                                       | return Array
 document.exist( '.selector' ) or Node.exist( '.selector' )                                                       | return true or false
 document.addDelegateListener(method, selector, callback) or Node.addDelegateListener(method, selector, callback) | add Event
 document.triggerListener( 'click' ) or Node.triggerListener( 'click' )                                           | trigger event

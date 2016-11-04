@@ -3,7 +3,7 @@
  *	author: Webkostya
  *	email: webkostya@icloud.com
  *  gitub: https://github.com/webkostya/Polyfill
- *	version: 1.0.4
+ *	version: 1.0.5
  */
 
 
@@ -87,8 +87,8 @@
 		return [].slice.call( this.querySelectorAll( selector ) );
 	}
 
-	_Element.childs = function() {
-		return [].slice.call( this.children );
+	_Element.childs = function( index ) {
+		return index != undefined ? this.children[index] : [].slice.call( this.children );
 	}
 
 	_Element.exist = function( selector ) {
