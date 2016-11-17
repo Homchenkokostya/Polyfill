@@ -17,7 +17,7 @@ Node.children[0].closest( 'body' )                                              
 parentNode.insertAfter(newNode, referenceNode)                                                                   | return newNode
 Node.css({top: 100, left: 200})                                                                                  | return Node  
 String.clear()                                                                                                   | return String (trim)
-String.includes()                                                                                                | return true or false
+String.includes( 'symbols' )                                                                                                | return true or false
 Array.compare( Array )                                                                                           | return difference
 global var \_extend_                                                                                             | default settings plugin
 
