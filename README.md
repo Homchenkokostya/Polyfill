@@ -1,5 +1,5 @@
 # Polyfill
-#### varsion: 1.0.5
+#### varsion: 1.0.6
 #
 
 Method                                  | Value
@@ -19,6 +19,8 @@ Node.css({top: 100, left: 200})                                                 
 String.clear()                                                                                                   | return String (trim)
 String.includes( 'symbols' )                                                                                                | return true or false
 Array.compare( Array )                                                                                           | return difference
+Array.min()                                                                                           | return min Number or NaN
+Array.max()                                                                                           | return max Number or NaN
 global var \_extend_                                                                                             | default settings plugin
 
 ### Installation

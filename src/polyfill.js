@@ -3,7 +3,7 @@
  *	author: Webkostya
  *	email: webkostya@icloud.com
  *  gitub: https://github.com/webkostya/Polyfill
- *	version: 1.0.5
+ *	version: 1.0.6
  */
 
 
@@ -152,6 +152,14 @@
 		    return array.indexOf( value ) < 0;
 		});
 	}
+
+	_Array.max = function() {
+        return Math.max.apply(Math, this)
+    }
+
+    _Array.min = function() {
+        return Math.min.apply(Math, this)
+    }
 
 
 	/*
