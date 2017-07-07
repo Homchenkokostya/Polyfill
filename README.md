@@ -19,8 +19,8 @@ Node.css({top: 100, left: 200})                                                 
 String.clear()                                                                                                   | return String (trim)
 String.includes( 'symbols' )                                                                                                | return true or false
 Array.compare( Array )                                                                                           | return difference
-Array.min()                                                                                           | return min Number or NaN
-Array.max()                                                                                           | return max Number or NaN
+Array.min()                                                                                           | return min Number
+Array.max()                                                                                           | return max Number
 global var \_extend_                                                                                             | default settings plugin
 
 ### Installation
